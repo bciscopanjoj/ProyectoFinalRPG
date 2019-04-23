@@ -7,7 +7,7 @@ package Interfaces;
 
 /**
  *
- * @author braya
+ * @author brayan
  */
 public class Inicio1 extends javax.swing.JFrame {
 
