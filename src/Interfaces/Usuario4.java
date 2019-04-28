@@ -13,8 +13,8 @@ import javax.swing.table.DefaultTableModel;
  * @author braya
  */
 public class Usuario4 extends javax.swing.JFrame {
-     private DefaultTableModel modelo;
-    int cont= 0;
+     private DefaultTableModel table;
+    int amd= 0;
 
     /**
      * Creates new form Usuario4
@@ -29,21 +29,21 @@ public class Usuario4 extends javax.swing.JFrame {
         public void CargarRegistrar(){
     String datos [][]= {};
     String columna[]= {"Nombre"};
-    String columna1[] = { "V1" };
+    String columna1[] = { "Edad" };
     
-    modelo = new DefaultTableModel(datos, columna);
-    jTableUsuario.setModel(modelo);
+    table = new DefaultTableModel(datos,columna);
+    jTableUsuario.setModel(table);
     
         }
     
      public void Cargardatos(){
                 ClaseUsuario j;
                 
-                for (int i = 0; i < NuevoUsuario5.contenedor.size(); i++) {
-                    j= (ClaseUsuario)NuevoUsuario5.contenedor.get(i);
-                  //  b= (Registrar) Registrar.contenedor.get(i);
-                    modelo.insertRow(cont, new Object []{ });
-                    modelo.setValueAt(j.getNickname(), cont, 0);
+                for (int i = 0; i < NuevoUsuario5.capsula.size(); i++) {
+                    j= (ClaseUsuario)NuevoUsuario5.capsula.get(i);
+                  //  b= (Registrar) Registrar.capsula.get(i);
+                    table.insertRow(amd, new Object []{ });
+                    table.setValueAt(j.getNickname(), amd, 0);
                    
                      
                     

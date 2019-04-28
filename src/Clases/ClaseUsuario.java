@@ -11,6 +11,8 @@ package Clases;
  */
 public class ClaseUsuario {
     String nickname;
+   
+
 
     public ClaseUsuario(String nickname) {
         this.nickname = nickname;

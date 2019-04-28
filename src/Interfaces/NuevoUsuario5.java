@@ -14,14 +14,15 @@ import java.util.LinkedList;
  */
 public class NuevoUsuario5 extends javax.swing.JFrame {
     
-      public static LinkedList contenedor = new LinkedList();
-    public int buscar;
+      public static LinkedList capsula = new LinkedList();
+    public int identificar;
     
     /**
      * Creates new form NuevoUsuario5
      */
     public NuevoUsuario5() {
         initComponents();
+        //Centrar ventana
          this.setLocationRelativeTo(null);
     }
 
@@ -35,8 +36,6 @@ public class NuevoUsuario5 extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextFieldNickname = new javax.swing.JTextField();
-        jTextFieldEdad = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -55,20 +54,7 @@ public class NuevoUsuario5 extends javax.swing.JFrame {
                 jTextFieldNicknameActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextFieldNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 230, 40));
-
-        jTextFieldEdad.setBackground(new java.awt.Color(0, 0, 0));
-        jTextFieldEdad.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
-        jTextFieldEdad.setForeground(new java.awt.Color(102, 255, 255));
-        jTextFieldEdad.setText("EDAD");
-        jTextFieldEdad.setAlignmentX(6.0F);
-        getContentPane().add(jTextFieldEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 230, 40));
-
-        jComboBox1.setBackground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(102, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MASCULINO", "FEMENINO" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 230, -1));
+        getContentPane().add(jTextFieldNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 160, 90));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
@@ -79,13 +65,18 @@ public class NuevoUsuario5 extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 160, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 160, -1));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(102, 255, 255));
         jButton2.setText("CANCELAR");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, 160, -1));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 160, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ciscoplay.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 200, 140));
@@ -103,29 +94,39 @@ public class NuevoUsuario5 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNicknameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // Regreso de ventana Usuario
-        //        este es el error no estas regresando a la pantalla anterior
-        //        estas creando una nueva instancia de la clase Usuario (que es un JFrame) y cuando supuestamente regreas
-        //                la lista enlzada contendedor aun no lo ha guardado
-
-        this.setVisible(false);
-
-       new Usuario4().setVisible(true);
+       
 
         String nombre = jTextFieldNickname.getText();
 
         //Nickname del usuario
-        ClaseUsuario  persona = new ClaseUsuario(nombre);
-        contenedor.add(persona);
-
+        ClaseUsuario  usuario = new ClaseUsuario(nombre);
+        capsula.add(usuario);
         //Limpia
         jTextFieldNickname.setText("");
+        
+       
+        
+        
+        
+        
+        
+        
+
+
 
         Usuario4 registro = new Usuario4();
         registro.show();
         this.setVisible(false);
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // Regreso Ventana Usuario4
+        Usuario4 registro = new Usuario4();
+        registro.show();
+        //Cerrar Ventana NuevoUsuario5
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,10 +166,8 @@ public class NuevoUsuario5 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextFieldEdad;
     private javax.swing.JTextField jTextFieldNickname;
     // End of variables declaration//GEN-END:variables
 }
