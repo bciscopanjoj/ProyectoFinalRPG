@@ -5,11 +5,35 @@
  */
 package Interfaces;
 
+import Clases.ClaseUsuario;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Formatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static proyectofinalrpg.ProyectoFinalRPG.pathUSUARIO;
+
 /**
  *
  * @author braya
  */
 public class Jugador7 extends javax.swing.JFrame {
+    public static LinkedList listado = new LinkedList();
+    public int asignar;
 
     /**
      * Creates new form Jugador7
@@ -20,7 +44,33 @@ public class Jugador7 extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     
     }
-
+    
+    
+    
+    public void createBinario(){
+        ObjectOutputStream binario = null;
+        try {
+            String nameFile = jTextField1Nick.getText();
+            File file = new File(nameFile);
+            ClaseUsuario persona = (ClaseUsuario) listado.getLast();
+           
+            binario = new ObjectOutputStream(new FileOutputStream(pathUSUARIO+persona.getNickname()+".persona"));
+          binario.writeObject(persona);
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+           // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                binario.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Jugador7.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,61 +80,79 @@ public class Jugador7 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
-        jComboBox3 = new javax.swing.JComboBox();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        jComboBox1V1 = new javax.swing.JComboBox();
+        jComboBox2V2 = new javax.swing.JComboBox();
+        jComboBox3V3 = new javax.swing.JComboBox();
+        jTextFieldV1 = new javax.swing.JTextField();
+        jTextFieldV2 = new javax.swing.JTextField();
+        jTextFieldV3 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextField1Nick = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox1.setBackground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(102, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VEHICULO", "TANQUE", "AVION" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 130, 30));
+        jComboBox1V1.setBackground(new java.awt.Color(0, 0, 0));
+        jComboBox1V1.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jComboBox1V1.setForeground(new java.awt.Color(102, 255, 255));
+        jComboBox1V1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VEHICULO", "TANQUE", "AVION" }));
+        jComboBox1V1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1V1ItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(jComboBox1V1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 130, 30));
 
-        jComboBox2.setBackground(new java.awt.Color(0, 0, 0));
-        jComboBox2.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(102, 255, 255));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VEHICULO", "TANQUE", "AVION" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 130, 30));
+        jComboBox2V2.setBackground(new java.awt.Color(0, 0, 0));
+        jComboBox2V2.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jComboBox2V2.setForeground(new java.awt.Color(102, 255, 255));
+        jComboBox2V2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VEHICULO", "TANQUE", "AVION" }));
+        jComboBox2V2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox2V2ItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(jComboBox2V2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 130, 30));
 
-        jComboBox3.setBackground(new java.awt.Color(0, 0, 0));
-        jComboBox3.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
-        jComboBox3.setForeground(new java.awt.Color(102, 255, 255));
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VEHICULO", "TANQUE", "AVION" }));
-        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 130, 30));
+        jComboBox3V3.setBackground(new java.awt.Color(0, 0, 0));
+        jComboBox3V3.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jComboBox3V3.setForeground(new java.awt.Color(102, 255, 255));
+        jComboBox3V3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "VEHICULO", "TANQUE", "AVION" }));
+        jComboBox3V3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox3V3ItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(jComboBox3V3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 130, 30));
 
-        jTextField5.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField5.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(102, 255, 255));
-        jTextField5.setText("NOMBRE VEHICULO");
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
+        jTextFieldV1.setBackground(new java.awt.Color(0, 0, 0));
+        jTextFieldV1.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jTextFieldV1.setForeground(new java.awt.Color(102, 255, 255));
+        jTextFieldV1.setText("NOMBRE VEHICULO");
+        getContentPane().add(jTextFieldV1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
 
-        jTextField6.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField6.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(102, 255, 255));
-        jTextField6.setText("NOMBRE VEHICULO");
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, -1, -1));
+        jTextFieldV2.setBackground(new java.awt.Color(0, 0, 0));
+        jTextFieldV2.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jTextFieldV2.setForeground(new java.awt.Color(102, 255, 255));
+        jTextFieldV2.setText("NOMBRE VEHICULO");
+        getContentPane().add(jTextFieldV2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, -1, -1));
 
-        jTextField7.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField7.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(102, 255, 255));
-        jTextField7.setText("NOMBRE VEHICULO");
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, 30));
+        jTextFieldV3.setBackground(new java.awt.Color(0, 0, 0));
+        jTextFieldV3.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jTextFieldV3.setForeground(new java.awt.Color(102, 255, 255));
+        jTextFieldV3.setText("NOMBRE VEHICULO");
+        getContentPane().add(jTextFieldV3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, 30));
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setDisplayedMnemonic('0');
@@ -111,11 +179,11 @@ public class Jugador7 extends javax.swing.JFrame {
         jLabel3.setText("VEHICULOS");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 160, 40));
 
-        jTextField1.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField1.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(102, 255, 255));
-        jTextField1.setText("NICKNAME");
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 250, 40));
+        jTextField1Nick.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField1Nick.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
+        jTextField1Nick.setForeground(new java.awt.Color(102, 255, 255));
+        jTextField1Nick.setText("NICKNAME");
+        getContentPane().add(jTextField1Nick, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 250, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ciscoplay.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, -1, 120));
@@ -130,6 +198,11 @@ public class Jugador7 extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(102, 255, 255));
         jButton4.setText("GUARDAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 150, 50));
 
         jButton5.setBackground(new java.awt.Color(0, 0, 0));
@@ -142,6 +215,15 @@ public class Jugador7 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 150, 50));
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, -1, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 274, -1, 30));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, -1, -1));
 
         jLabel1.setDisplayedMnemonic('0');
         jLabel1.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
@@ -160,6 +242,52 @@ public class Jugador7 extends javax.swing.JFrame {
         //Cerrar Ventana Jugador7
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jComboBox1V1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1V1ItemStateChanged
+        //Enviar mensaje a textfield
+        this.jTextField1.setText(" "+jComboBox1V1.getSelectedItem().toString());
+    }//GEN-LAST:event_jComboBox1V1ItemStateChanged
+
+    private void jComboBox2V2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2V2ItemStateChanged
+        // Enviar mensjae a textfield
+         this.jTextField2.setText(" "+jComboBox2V2.getSelectedItem().toString());
+    }//GEN-LAST:event_jComboBox2V2ItemStateChanged
+
+    private void jComboBox3V3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox3V3ItemStateChanged
+        // Enviar mensaje a textfield
+         this.jTextField3.setText(" "+jComboBox3V3.getSelectedItem().toString());
+    }//GEN-LAST:event_jComboBox3V3ItemStateChanged
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        
+        
+         String nickname = jTextField1Nick.getText();
+     String Nvehiculo1 = jTextFieldV1.getText();
+     String Nvehiculo2= jTextFieldV2.getText();
+     String Nvehiculo3 = jTextFieldV3.getText();
+     String Clase1 = jTextField1.getText();
+     String Clase2 = jTextField2.getText();
+     String Clase3 = jTextField2.getText();
+     
+        //NOMBRE DE LA PERSONA ATRUBUTOS
+       ClaseUsuario persona = new ClaseUsuario(nickname,Nvehiculo1, Nvehiculo2,Nvehiculo3, Clase1,  Clase2,Clase3);
+        listado.add(persona);
+        
+        //Limpia
+        jTextField1Nick.setText("");
+        jTextFieldV1.setText("");
+        jTextFieldV2.setText("");
+       jTextFieldV3.setText("");
+     
+        ClaseUsuario p = (ClaseUsuario)listado.getLast();
+        createBinario();
+     
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,18 +328,21 @@ public class Jugador7 extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JComboBox jComboBox1V1;
+    private javax.swing.JComboBox jComboBox2V2;
+    private javax.swing.JComboBox jComboBox3V3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    public static javax.swing.JTextField jTextField1;
+    public static javax.swing.JTextField jTextField1Nick;
+    public static javax.swing.JTextField jTextField2;
+    public static javax.swing.JTextField jTextField3;
+    public static javax.swing.JTextField jTextFieldV1;
+    public static javax.swing.JTextField jTextFieldV2;
+    public static javax.swing.JTextField jTextFieldV3;
     // End of variables declaration//GEN-END:variables
 }

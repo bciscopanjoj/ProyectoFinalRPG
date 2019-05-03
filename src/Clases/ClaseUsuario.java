@@ -5,11 +5,13 @@
  */
 package Clases;
 
+import java.io.Serializable;
+
 /**
  *
  * @author braya
  */
-public class ClaseUsuario {
+public class ClaseUsuario implements Serializable{
     String nickname;
     String Nvehiculo1;
     String Nvehiculo2;
@@ -18,7 +20,8 @@ public class ClaseUsuario {
     String Clase2;
     String Clase3;
 
-    public ClaseUsuario(String Nvehiculo1, String Nvehiculo2, String Nvehiculo3, String Clase1, String Clase2, String Clase3) {
+    public ClaseUsuario(String nickname, String Nvehiculo1, String Nvehiculo2, String Nvehiculo3, String Clase1, String Clase2, String Clase3) {
+        this.nickname = nickname;
         this.Nvehiculo1 = Nvehiculo1;
         this.Nvehiculo2 = Nvehiculo2;
         this.Nvehiculo3 = Nvehiculo3;
@@ -27,12 +30,36 @@ public class ClaseUsuario {
         this.Clase3 = Clase3;
     }
 
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
     public String getNvehiculo1() {
         return Nvehiculo1;
     }
 
     public void setNvehiculo1(String Nvehiculo1) {
         this.Nvehiculo1 = Nvehiculo1;
+    }
+
+    public String getNvehiculo2() {
+        return Nvehiculo2;
+    }
+
+    public void setNvehiculo2(String Nvehiculo2) {
+        this.Nvehiculo2 = Nvehiculo2;
+    }
+
+    public String getNvehiculo3() {
+        return Nvehiculo3;
+    }
+
+    public void setNvehiculo3(String Nvehiculo3) {
+        this.Nvehiculo3 = Nvehiculo3;
     }
 
     public String getClase1() {
@@ -58,22 +85,7 @@ public class ClaseUsuario {
     public void setClase3(String Clase3) {
         this.Clase3 = Clase3;
     }
-    
-    
-     
 
+  
 
-    public ClaseUsuario(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-    
-    
 }

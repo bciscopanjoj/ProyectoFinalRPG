@@ -6,6 +6,7 @@
 package proyectofinalrpg;
 
 import Interfaces.Inicio1;
+import java.io.File;
 
 
 
@@ -23,7 +24,29 @@ public class ProyectoFinalRPG {
         Inicio1 principal = new Inicio1();
         principal.show();
 
+        
+        
+        File createCarpeta = new File("Usuario");
+        File createCarpeta1 = new File("Armas");
+        File createCarpeta2 = new File("Aviones");
+        File createCarpeta3 = new File("Tanques");
+        
+        
+        if (!createCarpeta.exists()) {
+            createCarpeta.mkdir();
+            
+        }
+        
+        pathUSUARIO = createCarpeta.getAbsolutePath()+File.separatorChar;
+        pathARMAS = createCarpeta1.getAbsolutePath()+File.separatorChar;
+        pathAVIONES = createCarpeta2.getAbsolutePath()+File.separatorChar;
+        pathTANQUES = createCarpeta3.getAbsolutePath()+File.separatorChar;
+        
   
     }
+    public static String pathUSUARIO;
+    public static String pathARMAS;
+    public static String pathAVIONES;
+    public static String pathTANQUES;
     
 }

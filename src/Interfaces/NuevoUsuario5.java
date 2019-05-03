@@ -99,8 +99,8 @@ public class NuevoUsuario5 extends javax.swing.JFrame {
         String nombre = jTextFieldNickname.getText();
 
         //Nickname del usuario
-        ClaseUsuario  usuario = new ClaseUsuario(nombre);
-        capsula.add(usuario);
+        //ClaseUsuario  usuario = new ClaseUsuario(nombre);
+        //capsula.add(usuario);
         //Limpia
         jTextFieldNickname.setText("");
         

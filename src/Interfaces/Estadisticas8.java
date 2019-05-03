@@ -5,10 +5,20 @@
  */
 package Interfaces;
 
+import Clases.ClaseUsuario;
+import static Interfaces.Jugador7.jTextField1Nick;
+import static Interfaces.Jugador7.listado;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static proyectofinalrpg.ProyectoFinalRPG.pathUSUARIO;
 
 /**
  *
@@ -17,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
 public class Estadisticas8 extends javax.swing.JFrame {
     
     private DefaultTableModel table;
-    int capsu = 0;
+    int amd = 0;
 
     /**
      * Creates new form Estadisticas8
@@ -25,38 +35,73 @@ public class Estadisticas8 extends javax.swing.JFrame {
     public Estadisticas8() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
-        readBin();
+        readBinario();
         CargarEstadistica();
         CargarInfo();
     }
     
     public void CargarEstadistica(){
     String datos [][]= {};
-    String columna[]= {"NICKNAME","CLASE(V1)", "VEHICULO1", "CLASE(V2)", "VEHICULO2", "CLASE(V3)", "VEHICULO3"};
+    String columna[]= {"nickname","Clase1", "Nvehiculo1", "Clase2", "Nvehiculo2", "Clase3", "Nvehiculo3"};
     String columna1[] = { "V1" };
     
         
     table= new DefaultTableModel(datos, columna);
     jTable1Estad.setModel(table);
-    
-    public void readBin(){
-        list.clear();
+       
+}
+        public void readBinario(){
+        listado.clear();
         ObjectInputStream binario = null;
         try {
-            String nameFile = nickname.getText();
-            File file = new File("Persona");
+          // String nameFile = jTextField1Nick.getText();
+            File f1 = new File("ClaseUsuario");
             
             
             
-            for (String string : file.list()) {
+            for (String string1 : f1.list()) {
                 
-                binario = new ObjectInputStream(new FileInputStream(pathPersona+string));
-                Persona p = (Persona) binario.readObject();
-                list.add(p);
+                binario = new ObjectInputStream(new FileInputStream(pathUSUARIO+string1));
+                ClaseUsuario p = (ClaseUsuario) binario.readObject();
+                listado.add(p);
                 
             }
-}
+            
+            
+            
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+          // Logger.getLogger(Jugador7.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                binario.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Jugador7.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }
+    
+            public void CargarInfo(){
+                ClaseUsuario a;
+                for (int i = 0; i < Jugador7.listado.size(); i++) {
+                    a= (ClaseUsuario)Jugador7.listado.get(i);
+                    table.insertRow(amd, new Object []{ });
+                    table.setValueAt(a.getNickname(), amd, 0);
+                    table.setValueAt(a.getClase1(), amd, 1);
+                    table.setValueAt(a.getNvehiculo1(), amd, 2);
+                    table.setValueAt(a.getClase2(), amd, 3);
+                    table.setValueAt(a.getNvehiculo2(), amd, 4);
+                    table.setValueAt(a.getClase3(), amd, 5);
+                    table.setValueAt(a.getNvehiculo3(), amd, 6);
+                                                  
+                    
+                }
+            }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,6 +125,9 @@ public class Estadisticas8 extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ciscoplay.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 200, 110));
 
+        jTable1Estad.setBackground(new java.awt.Color(0, 0, 0));
+        jTable1Estad.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jTable1Estad.setForeground(new java.awt.Color(102, 255, 255));
         jTable1Estad.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

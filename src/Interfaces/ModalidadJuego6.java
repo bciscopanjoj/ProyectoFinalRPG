@@ -83,8 +83,8 @@ public class ModalidadJuego6 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // Regreso Ventana NuevoUsuario5
-        NuevoUsuario5 nuevo = new NuevoUsuario5();
+        // Regreso Ventana InicioJuego3
+        InicioJuego3 nuevo = new InicioJuego3();
         nuevo.show();
         // Cerrrar Ventana ModalidadJuego6
         this.setVisible(false);
