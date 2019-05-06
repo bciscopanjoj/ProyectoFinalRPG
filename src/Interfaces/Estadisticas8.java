@@ -126,7 +126,6 @@ public class Estadisticas8 extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 200, 110));
 
         jTable1Estad.setBackground(new java.awt.Color(0, 0, 0));
-        jTable1Estad.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
         jTable1Estad.setForeground(new java.awt.Color(102, 255, 255));
         jTable1Estad.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

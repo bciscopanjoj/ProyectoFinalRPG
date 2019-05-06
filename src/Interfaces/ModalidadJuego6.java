@@ -131,8 +131,12 @@ public class ModalidadJuego6 extends javax.swing.JFrame {
                 new ModalidadJuego6().setVisible(true);
             }
         });
+        
     }
-
+    public static String pathARMAS;
+    public static String pathTANQUES;
+    public static String pathAVIONES;
+    public static String pathUSUARIO;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

@@ -192,6 +192,11 @@ public class Jugador7 extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(102, 255, 255));
         jButton3.setText("JUGAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 150, 50));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
@@ -288,6 +293,14 @@ public class Jugador7 extends javax.swing.JFrame {
         createBinario();
      
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // Abrir Ventana Escenario9
+        
+        Escenario9 tablero = new Escenario9();
+        tablero.show();
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
