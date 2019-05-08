@@ -60,6 +60,11 @@ public class ModalidadJuego6 extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Berlin Sans FB", 1, 36)); // NOI18N
         jButton3.setForeground(new java.awt.Color(102, 255, 255));
         jButton3.setText("TIENDA");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 220, -1));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
@@ -97,6 +102,13 @@ public class ModalidadJuego6 extends javax.swing.JFrame {
         //Cerrar Ventana ModalidadJuego6
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        Armas11 eleccion = new Armas11();
+        eleccion.show();
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,18 +5,96 @@
  */
 package Interfaces;
 
+import Clases.Modelo;
+import static Interfaces.CrearArmas10.capsulaarmas;
+import static Interfaces.ModalidadJuego6.pathARMAS;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author braya
  */
-public class Armas extends javax.swing.JFrame {
+public class Armas11 extends javax.swing.JFrame {
+    
+     private DefaultTableModel table1;
+    int amd1 = 0;
 
     /**
      * Creates new form Armas
      */
-    public Armas() {
-        initComponents();
+    public Armas11() {
+        initComponents(); this.setLocationRelativeTo(null);
+        readBinario1();
+        CargarRegistrar();
+        Cargardatos();
     }
+    
+    public void CargarRegistrar(){
+    String datos [][]= {};
+    String columna[]= {"Arma", "Presicion", "Daño", "Velocidad", "Precio"};
+    
+    
+        
+  
+    
+    table1= new DefaultTableModel(datos, columna);
+    jTable1A.setModel(table1);
+    
+}
+
+   public void readBinario1(){
+        capsulaarmas.clear();
+        ObjectInputStream binario = null;
+        try {
+           // String nameFile = jTextField1N.getText();
+            File file_ar = new File("ARMAS");
+            
+            
+            
+            for (String string3:file_ar.list()) {
+                
+                binario = new ObjectInputStream(new FileInputStream(pathARMAS+string3));
+                Modelo arm = (Modelo) binario.readObject();
+                capsulaarmas.add(arm);
+                
+            }
+            
+            
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+           // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                binario.close();
+            } catch (IOException e) {
+                Logger.getLogger(CrearArmas10.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        
+    }    public void Cargardatos(){
+                Modelo b;
+                for (int i = 0; i < CrearArmas10.capsulaarmas.size(); i++) {
+                    b= (Modelo)CrearArmas10.capsulaarmas.get(i);
+                    table1.insertRow(amd1, new Object []{ });
+                    table1.setValueAt(b.getNombre(), amd1, 0);
+                   table1.setValueAt(b.getPunteria(), amd1, 1);
+                   table1.setValueAt(b.getAtaque(), amd1, 2);
+                    table1.setValueAt(b.getPrecio(),amd1,3);
+                    
+                 
+                }
+                    
+                
+                
+            }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,7 +107,7 @@ public class Armas extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable1A = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -40,7 +118,7 @@ public class Armas extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ciscoplay.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 190, 120));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1A.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -48,7 +126,7 @@ public class Armas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTable1A);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 340, 190));
 
@@ -87,20 +165,23 @@ public class Armas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Armas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Armas11.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Armas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Armas11.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Armas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Armas11.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Armas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Armas11.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Armas().setVisible(true);
+                new Armas11().setVisible(true);
             }
         });
     }
@@ -111,6 +192,6 @@ public class Armas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable1A;
     // End of variables declaration//GEN-END:variables
 }

@@ -71,6 +71,11 @@ public class InicioJuego3 extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(102, 255, 255));
         jButton2.setText("CREAR V/A");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 240, 70));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
@@ -134,6 +139,13 @@ public class InicioJuego3 extends javax.swing.JFrame {
       this.setVisible(false); 
        
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        CrearArmas10 creaciones = new CrearArmas10();
+        creaciones.show();
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

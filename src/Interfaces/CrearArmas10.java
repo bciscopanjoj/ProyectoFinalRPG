@@ -5,17 +5,55 @@
  */
 package Interfaces;
 
+import Clases.Modelo;
+import static Interfaces.ModalidadJuego6.pathARMAS;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author braya
  */
 public class CrearArmas10 extends javax.swing.JFrame {
+    
+    public static LinkedList capsulaarmas = new LinkedList();
+    public int identificarA;
 
     /**
      * Creates new form CrearArmas
      */
     public CrearArmas10() {
         initComponents();
+                this.setLocationRelativeTo(null);          
+                
+    }
+    
+     public void createBin(){
+        ObjectOutputStream binario = null;
+        try {
+            String nameFile = jTextField1N.getText();
+            File file = new File(nameFile);
+            Modelo gun = (Modelo) capsulaarmas.getLast();
+           
+            binario = new ObjectOutputStream(new FileOutputStream(pathARMAS+gun.getNombre()+".arm"));
+            binario.writeObject(gun);
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+           // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                binario.close();
+            } catch (IOException ex) {
+                Logger.getLogger(CrearArmas10.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
     }
 
     /**
@@ -27,37 +65,43 @@ public class CrearArmas10 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        jTextField1N = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox();
         jComboBox3 = new javax.swing.JComboBox();
         jComboBox1 = new javax.swing.JComboBox();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextField3P = new javax.swing.JTextField();
+        jTextField4A = new javax.swing.JTextField();
+        jTextField2P = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField1.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(102, 255, 255));
-        jTextField1.setText("INGRESE NOMBRE DEL ARMA");
-        jTextField1.setToolTipText("");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextField1N.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField1N.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jTextField1N.setForeground(new java.awt.Color(102, 255, 255));
+        jTextField1N.setText("INGRESE NOMBRE DEL ARMA");
+        jTextField1N.setToolTipText("");
+        jTextField1N.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextField1NActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 280, 30));
+        getContentPane().add(jTextField1N, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 280, 30));
 
         jComboBox2.setBackground(new java.awt.Color(0, 0, 0));
         jComboBox2.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
         jComboBox2.setForeground(new java.awt.Color(102, 255, 255));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "4", "6", "8", "10" }));
         jComboBox2.setToolTipText("");
+        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox2ItemStateChanged(evt);
+            }
+        });
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -70,6 +114,11 @@ public class CrearArmas10 extends javax.swing.JFrame {
         jComboBox3.setForeground(new java.awt.Color(102, 255, 255));
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "4", "6", "8", "10" }));
         jComboBox3.setToolTipText("");
+        jComboBox3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox3ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 80, 30));
 
         jComboBox1.setBackground(new java.awt.Color(0, 0, 0));
@@ -77,6 +126,11 @@ public class CrearArmas10 extends javax.swing.JFrame {
         jComboBox1.setForeground(new java.awt.Color(102, 255, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20", "40", "60", "80", "100", " " }));
         jComboBox1.setToolTipText("");
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -84,31 +138,31 @@ public class CrearArmas10 extends javax.swing.JFrame {
         });
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 80, 30));
 
-        jTextField3.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField3.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(102, 255, 255));
-        jTextField3.setText("PUNTERIA");
-        jTextField3.setToolTipText("");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jTextField3P.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField3P.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jTextField3P.setForeground(new java.awt.Color(102, 255, 255));
+        jTextField3P.setText("PUNTERIA");
+        jTextField3P.setToolTipText("");
+        jTextField3P.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jTextField3PActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 200, 30));
+        getContentPane().add(jTextField3P, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, 200, 30));
 
-        jTextField4.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField4.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(102, 255, 255));
-        jTextField4.setText("ATAQUE");
-        jTextField4.setToolTipText("");
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, 200, 30));
+        jTextField4A.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField4A.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jTextField4A.setForeground(new java.awt.Color(102, 255, 255));
+        jTextField4A.setText("ATAQUE");
+        jTextField4A.setToolTipText("");
+        getContentPane().add(jTextField4A, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, 200, 30));
 
-        jTextField2.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField2.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(102, 255, 255));
-        jTextField2.setText("PRECIO");
-        jTextField2.setToolTipText("");
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 200, 30));
+        jTextField2P.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField2P.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jTextField2P.setForeground(new java.awt.Color(102, 255, 255));
+        jTextField2P.setText("PRECIO");
+        jTextField2P.setToolTipText("");
+        getContentPane().add(jTextField2P, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 200, 30));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
@@ -120,7 +174,18 @@ public class CrearArmas10 extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 289, 150, 60));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 160, 60));
+
+        jButton2.setBackground(new java.awt.Color(0, 0, 0));
+        jButton2.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(102, 255, 255));
+        jButton2.setText("GUARDAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 160, 60));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ciscoplay.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 190, 120));
@@ -131,9 +196,9 @@ public class CrearArmas10 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextField1NActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1NActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextField1NActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
@@ -143,13 +208,60 @@ public class CrearArmas10 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jTextField3PActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3PActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_jTextField3PActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        InicioJuego3 regreso = new InicioJuego3();
+        regreso.show();
+        this.setVisible(false);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+          String nombre = jTextField1N.getText();
+        String punteria = jTextField3P.getText();
+        String ataque = jTextField4A.getText();
+        String precio = jTextField2P.getText();
+  
+        
+        
+            Modelo arm = new Modelo(nombre, punteria, ataque,precio);
+        capsulaarmas.add(arm);
+        //Limpia
+        jTextField1N.setText("");
+        jTextField3P.setText("");
+       jTextField4A.setText("");
+        jTextField2P.setText("");
+     
+        
+        Modelo armm = (Modelo)capsulaarmas.getLast();
+        createBin();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
+        // TODO add your handling code here:
+        this.jTextField3P.setText(" "+jComboBox2.getSelectedItem().toString());
+        
+        
+    }//GEN-LAST:event_jComboBox2ItemStateChanged
+
+    private void jComboBox3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox3ItemStateChanged
+        // TODO add your handling code here:
+        this.jTextField4A.setText(" "+jComboBox3.getSelectedItem().toString());
+        
+        
+        
+    }//GEN-LAST:event_jComboBox3ItemStateChanged
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // TODO add your handling code here:
+        this.jTextField2P.setText(" "+jComboBox1.getSelectedItem().toString());
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -189,14 +301,15 @@ public class CrearArmas10 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField1N;
+    private javax.swing.JTextField jTextField2P;
+    private javax.swing.JTextField jTextField3P;
+    private javax.swing.JTextField jTextField4A;
     // End of variables declaration//GEN-END:variables
 }
