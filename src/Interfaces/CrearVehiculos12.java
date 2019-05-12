@@ -5,11 +5,21 @@
  */
 package Interfaces;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author braya
  */
 public class CrearVehiculos12 extends javax.swing.JFrame {
+    public static LinkedList contenedor_avion = new LinkedList();
+    public int buscar;
 
     /**
      * Creates new form Vehiculos12
@@ -18,6 +28,40 @@ public class CrearVehiculos12 extends javax.swing.JFrame {
         initComponents();
     }
 
+    
+    
+    
+     public Aviones() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+
+    }
+      public void createBin(){
+        ObjectOutputStream binario = null;
+        try {
+            String nameFile = nombre_avion.getText();
+            File file = new File(nameFile);
+            Aviones_C Airplane = (Aviones_C) contenedor_avion.getLast();
+           
+            binario = new ObjectOutputStream(new FileOutputStream(pathAviones+Airplane.getAvion()+".avion"));
+            binario.writeObject(Airplane);
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+           // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                binario.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Aviones.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }
+      
+      
+      
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,6 +83,7 @@ public class CrearVehiculos12 extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox();
         jTextField1 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,7 +93,7 @@ public class CrearVehiculos12 extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(102, 255, 255));
         jButton1.setText("REGRESAR");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 150, 60));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 150, 60));
 
         jComboBox5.setBackground(new java.awt.Color(0, 0, 0));
         jComboBox5.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
@@ -126,6 +171,17 @@ public class CrearVehiculos12 extends javax.swing.JFrame {
         jTextField1.setText("TIPO DE VEHICULO");
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 190, -1));
 
+        jButton2.setBackground(new java.awt.Color(0, 0, 0));
+        jButton2.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(102, 255, 255));
+        jButton2.setText("GUARDAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 160, 60));
+
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setForeground(new java.awt.Color(102, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vehiculos.jpg"))); // NOI18N
@@ -138,6 +194,39 @@ public class CrearVehiculos12 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        String N_Tanque = nombre_avion.getText();
+        String N_Presicion = Presicion.getText();
+        String N_Ataque = Ataque.getText();
+        String N_Defensa = Defensa.getText();
+        String N_Velocidad = Velocidad.getText();
+        String N_Precio = Precio.getText();
+  
+    
+    
+   
+        //NOMBRE DE LA PERSONA ATRUBUTOS
+      
+        Aviones_C av  = new Aviones_C (N_Tanque, N_Presicion,N_Ataque, N_Defensa, N_Velocidad, N_Precio);
+        contenedor_avion.add(av);
+        //Limpia
+        nombre_avion.setText("");
+        Presicion.setText("");
+        Ataque.setText("");
+        Defensa.setText("");
+        Velocidad.setText("");
+        Precio.setText("");
+        
+        Aviones_C p = (Aviones_C)contenedor_avion.getLast();
+        createBin();
+// TODO
+        
+        // TODO add your handling code here:
+                                           
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,6 +266,7 @@ public class CrearVehiculos12 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;

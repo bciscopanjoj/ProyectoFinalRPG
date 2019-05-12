@@ -5,19 +5,60 @@
  */
 package Interfaces;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author braya
  */
 public class Vehiculos13 extends javax.swing.JFrame {
+     private DefaultTableModel modelo;
+    int cont = 0;
 
     /**
      * Creates new form Vehiculos13
      */
     public Vehiculos13() {
         initComponents();
+         this.setLocationRelativeTo(null);
+        readBinario();
+        CargarRegistrar();
+        Cargardatos();
     }
 
+    
+    public void CargarRegistrar(){
+    String datos [][]= {};
+    String columna[]= {"Avion", "Presicion","Ataque", "Defensa", "Velocidad", "Precio"};
+    
+    
+        
+  
+    
+    modelo= new DefaultTableModel(datos, columna);
+    jTableAviones.setModel(modelo);
+    
+}
+
+
+    public void readBinario(){
+        contenedor_avion.clear();
+        ObjectInputStream binario = null;
+        try {
+            String nameFile = nombre_avion.getText();
+            File file_av = new File("Aviones");
+            
+            
+            
+            for (String string2:file_av.list()) {
+                
+                binario = new ObjectInputStream(new FileInputStream(pathAviones+string2));
+                Aviones_C av = (Aviones_C) binario.readObject();
+                contenedor_avion.add(av);
+                
+            }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
