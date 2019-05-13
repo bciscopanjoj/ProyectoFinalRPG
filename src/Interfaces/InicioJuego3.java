@@ -36,6 +36,7 @@ public class InicioJuego3 extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -92,13 +93,24 @@ public class InicioJuego3 extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(0, 0, 0));
         jButton5.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
         jButton5.setForeground(new java.awt.Color(102, 255, 255));
-        jButton5.setText("ESTADISTICAS");
+        jButton5.setText("REPORTES");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 240, 70));
+
+        jButton6.setBackground(new java.awt.Color(0, 0, 0));
+        jButton6.setFont(new java.awt.Font("Berlin Sans FB", 1, 12)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(102, 255, 255));
+        jButton6.setText("HTML");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 370, 80, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -134,7 +146,7 @@ public class InicioJuego3 extends javax.swing.JFrame {
         //Jugador7 principa2 = new Jugador7();
       //principa2.show();
       //principa2.setVisible rthis.setVisible(false); 
-      Estadisticas8 principal = new Estadisticas8();
+      Reportes8 principal = new Reportes8();
       principal.show();
       this.setVisible(false); 
        
@@ -146,6 +158,14 @@ public class InicioJuego3 extends javax.swing.JFrame {
         creaciones.show();
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        HTMLInterfaz exportar = new HTMLInterfaz();
+        exportar.show();
+        this.dispose();
+                
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,6 +209,7 @@ public class InicioJuego3 extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

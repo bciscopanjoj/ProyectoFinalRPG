@@ -7,14 +7,15 @@ package Interfaces;
 
 import Clases.Modelo;
 import static Interfaces.CrearArmas10.capsulaarmas;
-import static Interfaces.ModalidadJuego6.pathARMAS;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static proyectofinalrpg.ProyectoFinalRPG.pathARMAS;
 
 /**
  *
@@ -37,7 +38,7 @@ public class Armas11 extends javax.swing.JFrame {
     
     public void CargarRegistrar(){
     String datos [][]= {};
-    String columna[]= {"Arma", "Presicion", "Daño", "Velocidad", "Precio"};
+    String columna[]= {"Nombre", "Punteria", "Ataque", "Precio"};
     
     
         
@@ -52,20 +53,22 @@ public class Armas11 extends javax.swing.JFrame {
         capsulaarmas.clear();
         ObjectInputStream binario = null;
         try {
+            System.out.println("Entro al try");
            // String nameFile = jTextField1N.getText();
-            File file_ar = new File("ARMAS");
-            
-            
-            
-            for (String string3:file_ar.list()) {
-                
-                binario = new ObjectInputStream(new FileInputStream(pathARMAS+string3));
-                Modelo arm = (Modelo) binario.readObject();
-                capsulaarmas.add(arm);
-                
-            }
-            
-            
+            File file_ar = new File(pathARMAS);
+           
+            if (file_ar.isDirectory() ){
+                for (String string3:file_ar.list()) {
+                    binario = new ObjectInputStream(new FileInputStream(pathARMAS+string3));
+                    Modelo arm = (Modelo) binario.readObject();
+                    capsulaarmas.add(arm);
+                    
+                }
+                for (int i = 0; i < capsulaarmas.size(); i++) {
+                    System.out.println("capsulaarmas.get = " + capsulaarmas.get(i).toString());
+                    
+                }
+             }else JOptionPane.showMessageDialog(null, "No Hay Armas", "Informacion", JOptionPane.ERROR_MESSAGE);
             
             
         } catch (Exception e) {
@@ -73,7 +76,10 @@ public class Armas11 extends javax.swing.JFrame {
            // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
+                if (binario != null) {
+                    
                 binario.close();
+                }
             } catch (IOException e) {
                 Logger.getLogger(CrearArmas10.class.getName()).log(Level.SEVERE, null, e);
             }
@@ -134,6 +140,11 @@ public class Armas11 extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(102, 255, 255));
         jButton2.setText("REGRESAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 210, 60));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
@@ -147,6 +158,13 @@ public class Armas11 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Tienda14 regreso = new Tienda14();
+        regreso.show();
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

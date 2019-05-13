@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import Clases.Vehiculos;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,39 +13,35 @@ import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static proyectofinalrpg.ProyectoFinalRPG.pathVehiculos;
 
 /**
  *
  * @author braya
  */
 public class CrearVehiculos12 extends javax.swing.JFrame {
-    public static LinkedList contenedor_avion = new LinkedList();
-    public int buscar;
-
+  
+ public static LinkedList capsulavehiculo = new LinkedList();
+    public int identificar;
+  
     /**
      * Creates new form Vehiculos12
      */
     public CrearVehiculos12() {
         initComponents();
-    }
-
-    
-    
-    
-     public Aviones() {
-        initComponents();
         this.setLocationRelativeTo(null);
-
     }
-      public void createBin(){
+    
+    
+     public void createBin(){
         ObjectOutputStream binario = null;
         try {
-            String nameFile = nombre_avion.getText();
+            String nameFile = jTextField2N.getText();
             File file = new File(nameFile);
-            Aviones_C Airplane = (Aviones_C) contenedor_avion.getLast();
+            Vehiculos vehiculos = (Vehiculos) capsulavehiculo.getLast();
            
-            binario = new ObjectOutputStream(new FileOutputStream(pathAviones+Airplane.getAvion()+".avion"));
-            binario.writeObject(Airplane);
+            binario = new ObjectOutputStream(new FileOutputStream(pathVehiculos+vehiculos.getNombreV()+".avion"));
+            binario.writeObject(vehiculos);
             
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -53,11 +50,17 @@ public class CrearVehiculos12 extends javax.swing.JFrame {
             try {
                 binario.close();
             } catch (IOException ex) {
-                Logger.getLogger(Aviones.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CrearVehiculos12.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         
     }
+  
+    
+   
+
+    
+   
       
       
       
@@ -75,14 +78,14 @@ public class CrearVehiculos12 extends javax.swing.JFrame {
         jComboBox5 = new javax.swing.JComboBox();
         jComboBox2 = new javax.swing.JComboBox();
         jComboBox4 = new javax.swing.JComboBox();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextField6PR = new javax.swing.JTextField();
+        jTextField5D = new javax.swing.JTextField();
+        jTextField4P = new javax.swing.JTextField();
+        jTextField3A = new javax.swing.JTextField();
         jComboBox3 = new javax.swing.JComboBox();
-        jTextField2 = new javax.swing.JTextField();
+        jTextField2N = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox();
-        jTextField1 = new javax.swing.JTextField();
+        jTextField1T = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -100,6 +103,11 @@ public class CrearVehiculos12 extends javax.swing.JFrame {
         jComboBox5.setForeground(new java.awt.Color(102, 255, 255));
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30", "50", "70", "90", "110", "130" }));
         jComboBox5.setToolTipText("");
+        jComboBox5.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox5ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 100, -1));
 
         jComboBox2.setBackground(new java.awt.Color(0, 0, 0));
@@ -107,6 +115,11 @@ public class CrearVehiculos12 extends javax.swing.JFrame {
         jComboBox2.setForeground(new java.awt.Color(102, 255, 255));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "3", "6", "10", "14", "18", "22" }));
         jComboBox2.setToolTipText("");
+        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox2ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 100, -1));
 
         jComboBox4.setBackground(new java.awt.Color(0, 0, 0));
@@ -114,49 +127,64 @@ public class CrearVehiculos12 extends javax.swing.JFrame {
         jComboBox4.setForeground(new java.awt.Color(102, 255, 255));
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "60", "70", "80", "90", "100", "110" }));
         jComboBox4.setToolTipText("");
+        jComboBox4.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox4ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 100, -1));
 
-        jTextField6.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField6.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(102, 255, 255));
-        jTextField6.setText("PRECIO");
-        jTextField6.setToolTipText("");
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 190, -1));
+        jTextField6PR.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField6PR.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jTextField6PR.setForeground(new java.awt.Color(102, 255, 255));
+        jTextField6PR.setText("PRECIO");
+        jTextField6PR.setToolTipText("");
+        getContentPane().add(jTextField6PR, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 190, -1));
 
-        jTextField5.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField5.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(102, 255, 255));
-        jTextField5.setText("DEFENSA");
-        jTextField5.setToolTipText("");
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 190, -1));
+        jTextField5D.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField5D.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jTextField5D.setForeground(new java.awt.Color(102, 255, 255));
+        jTextField5D.setText("DEFENSA");
+        jTextField5D.setToolTipText("");
+        getContentPane().add(jTextField5D, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 190, -1));
 
-        jTextField4.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField4.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(102, 255, 255));
-        jTextField4.setText("PUNTERIA");
-        jTextField4.setToolTipText("");
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 190, -1));
+        jTextField4P.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField4P.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jTextField4P.setForeground(new java.awt.Color(102, 255, 255));
+        jTextField4P.setText("PUNTERIA");
+        jTextField4P.setToolTipText("");
+        getContentPane().add(jTextField4P, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 190, -1));
 
-        jTextField3.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField3.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(102, 255, 255));
-        jTextField3.setText("ATAQUE");
-        jTextField3.setToolTipText("");
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 190, -1));
+        jTextField3A.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField3A.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jTextField3A.setForeground(new java.awt.Color(102, 255, 255));
+        jTextField3A.setText("ATAQUE");
+        jTextField3A.setToolTipText("");
+        getContentPane().add(jTextField3A, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 190, -1));
 
         jComboBox3.setBackground(new java.awt.Color(0, 0, 0));
         jComboBox3.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
         jComboBox3.setForeground(new java.awt.Color(102, 255, 255));
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "7", "10", "14", "18", "22", "26" }));
         jComboBox3.setToolTipText("");
+        jComboBox3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox3ItemStateChanged(evt);
+            }
+        });
         getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 100, -1));
 
-        jTextField2.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField2.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(102, 255, 255));
-        jTextField2.setText("NOMBRE DEL VEHICULO");
-        jTextField2.setToolTipText("");
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 290, -1));
+        jTextField2N.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField2N.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jTextField2N.setForeground(new java.awt.Color(102, 255, 255));
+        jTextField2N.setText("NOMBRE DEL VEHICULO");
+        jTextField2N.setToolTipText("");
+        jTextField2N.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2NActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField2N, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 290, -1));
 
         jComboBox1.setBackground(new java.awt.Color(0, 0, 0));
         jComboBox1.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
@@ -165,11 +193,16 @@ public class CrearVehiculos12 extends javax.swing.JFrame {
         jComboBox1.setToolTipText("");
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 100, -1));
 
-        jTextField1.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField1.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(102, 255, 255));
-        jTextField1.setText("TIPO DE VEHICULO");
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 190, -1));
+        jTextField1T.setBackground(new java.awt.Color(0, 0, 0));
+        jTextField1T.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jTextField1T.setForeground(new java.awt.Color(102, 255, 255));
+        jTextField1T.setText("TIPO DE VEHICULO");
+        jTextField1T.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1TActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField1T, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 190, -1));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
@@ -197,36 +230,64 @@ public class CrearVehiculos12 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
-        String N_Tanque = nombre_avion.getText();
-        String N_Presicion = Presicion.getText();
-        String N_Ataque = Ataque.getText();
-        String N_Defensa = Defensa.getText();
-        String N_Velocidad = Velocidad.getText();
-        String N_Precio = Precio.getText();
+        String nombreV = jTextField2N.getText();
+        String punteriaV = jTextField4P.getText();
+        String ataqueV = jTextField3A.getText();
+        String defensaV = jTextField5D.getText();
+        String tipoV = jTextField1T.getText();
+        String precioV= jTextField6PR.getText();
   
     
     
    
         //NOMBRE DE LA PERSONA ATRUBUTOS
       
-        Aviones_C av  = new Aviones_C (N_Tanque, N_Presicion,N_Ataque, N_Defensa, N_Velocidad, N_Precio);
-        contenedor_avion.add(av);
+        Vehiculos av  = new Vehiculos (nombreV,punteriaV,ataqueV,defensaV, tipoV, precioV);
+        capsulavehiculo.add(av);
         //Limpia
-        nombre_avion.setText("");
-        Presicion.setText("");
-        Ataque.setText("");
-        Defensa.setText("");
-        Velocidad.setText("");
-        Precio.setText("");
+        jTextField2N.setText("");
+        jTextField4P.setText("");
+        jTextField3A.setText("");
+        jTextField5D.setText("");
+        jTextField1T.setText("");
+        jTextField6PR.setText("");
         
-        Aviones_C p = (Aviones_C)contenedor_avion.getLast();
+        Vehiculos ve = (Vehiculos)capsulavehiculo.getLast();
         createBin();
 // TODO
         
-        // TODO add your handling code here:
+   
                                            
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField2NActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2NActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2NActionPerformed
+
+    private void jComboBox3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox3ItemStateChanged
+        // TODO add your handling code here:
+         this.jTextField3A.setText(" "+jComboBox3.getSelectedItem().toString());
+    }//GEN-LAST:event_jComboBox3ItemStateChanged
+
+    private void jTextField1TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1TActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1TActionPerformed
+
+    private void jComboBox4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox4ItemStateChanged
+        // TODO add your handling code here:
+        this.jTextField4P.setText(" "+jComboBox4.getSelectedItem().toString());
+        
+    }//GEN-LAST:event_jComboBox4ItemStateChanged
+
+    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
+        // TODO add your handling code here:
+         this.jTextField5D.setText(" "+jComboBox2.getSelectedItem().toString());
+    }//GEN-LAST:event_jComboBox2ItemStateChanged
+
+    private void jComboBox5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox5ItemStateChanged
+        // TODO add your handling code here:
+        this.jTextField6PR.setText(" "+jComboBox5.getSelectedItem().toString());
+    }//GEN-LAST:event_jComboBox5ItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -273,11 +334,11 @@ public class CrearVehiculos12 extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox4;
     private javax.swing.JComboBox jComboBox5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField1T;
+    private javax.swing.JTextField jTextField2N;
+    private javax.swing.JTextField jTextField3A;
+    private javax.swing.JTextField jTextField4P;
+    private javax.swing.JTextField jTextField5D;
+    private javax.swing.JTextField jTextField6PR;
     // End of variables declaration//GEN-END:variables
 }

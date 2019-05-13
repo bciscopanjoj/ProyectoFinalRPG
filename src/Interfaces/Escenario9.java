@@ -18,90 +18,98 @@ import javax.swing.JButton;
  * @author braya
  */
 public class Escenario9 extends javax.swing.JFrame {
-    int turno, contp, contmp;
-    boolean gano= false;
     
-  JButton[][] tablero;
+    
+   
+    
+    //Instanciar Matriz para el boton
+  JButton[][] matriz;
 
     /**
      * Creates new form Escenario
      */
     public Escenario9() {
         initComponents();
-        turno = contp = contmp = 1;
+        
     }
-    
-    
-    
-    
+    //Recorre el tablero
      public void escenario5(int filas, int columnas){
- 
-    
- 
-        tablero =  new JButton[filas][columnas];
+        matriz =  new JButton[filas][columnas];
         int[][] juego = new int[filas][columnas];
         Random n = new Random();
          boolean blanco = true;
-         System.out.println("filas" + filas);
+         
+        //estos for recorren mis filas y columnas en mi matriz
         for (int i = 0; i<filas; i++){
             for (int j = 0; j<columnas; j++){
-                
+                //variable random para usarlo en mi switch
                 int c = (int)((Math.random()*3)+1);
                 System.out.println(c);
+                //aleatorio colores
                 switch(c){
+                    //si es una sera amarillo
                     case 1: 
                         juego[i][j]= 1;
-                        tablero[i][j] = new JButton ();
-                         tablero[i][j].setBounds((50*j), 50*i, 50, 50);
-                          tablero[i][j].setBackground(Color.white);
-                          break;
+                        matriz[i][j] = new JButton ();
+                         matriz[i][j].setBounds((50*j), 50*i, 50, 50);
+                          matriz[i][j].setBackground(Color.yellow);
+                          break; // rompe mi ciclo
+                        //si es 2 será rojo
                     case 2:
                         juego[i][j]= 2;
-                        tablero[i][j] = new JButton();
-                         tablero[i][j].setBounds((50*j), 50*i, 50, 50);
-                          tablero[i][j].setBackground(Color.green);
+                        matriz[i][j] = new JButton();
+                         matriz[i][j].setBounds((50*j), 50*i, 50, 50);
+                          matriz[i][j].setBackground(Color.red);
                           break;
+                        //3 azul
                     case 3:
                         juego[i][j]= 3;
-                        tablero[i][j] = new JButton ();
-                         tablero[i][j].setBounds((50*j), 50*i, 50, 50);
-                          tablero[i][j].setBackground(Color.blue);
+                        matriz[i][j] = new JButton ();
+                         matriz[i][j].setBounds((50*j), 50*i, 50, 50);
+                          matriz[i][j].setBackground(Color.blue); //set background para ponerlo del color que le estamos diciendo en el case
                     break;
                     default:
                     break;
                     
                 }
-                tablero[i][j].setVisible(true);
+                matriz[i][j].setVisible(true);
 
-                tablero[i][j].setBounds((50*j), 50*i, 50, 50);
+                matriz[i][j].setBounds((50*j), 50*i, 50, 50); //tamaño
                 
                 
                 
-                jPanelT.add(tablero[i][j]);
+                jPanelT.add(matriz[i][j]); //lo añado a mi JPANEL
                 
                  jPanelT.updateUI();
-       jPanelT.setLayout(new GridLayout(filas, columnas));
-            jPanelT.repaint();
+       jPanelT.setLayout(new GridLayout(filas, columnas)); //Diseño
+            jPanelT.repaint();//lo pintara otra vez
             
             
              }
            
             blanco = !blanco;
         }
-        
+        //random para colocar mi icono 
         int d = (int) (Math.random()*4);
         int d2 = (int) (Math.random()*4);
-              ImageIcon tanque = new ImageIcon("src/ImagenesD/tanquepequeño.jpg");
+              ImageIcon tanque = new ImageIcon("src/Imagenes/tanque.png");
         Icon iconoTanque = new ImageIcon(tanque.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
-        tablero[d][d2].setIcon(iconoTanque);
+        matriz[d][d2].setIcon(iconoTanque);
         juego[d][d2] = 5;
         
         int a = (int) (Math.random()*4);
         int a2 = (int) (Math.random()*4);
-            ImageIcon avion = new ImageIcon("src/ImagenesD/avionpequeño.jpg");
+            ImageIcon avion = new ImageIcon("src/Imagenes/60517.png");
         Icon iconoAvion = new ImageIcon(avion.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
-         tablero[a][a2].setIcon(iconoAvion);
+         matriz[a][a2].setIcon(iconoAvion);
         juego[a][a2] = 4;
+        
+        int b = (int) (Math.random()*4);
+        int b2 = (int) (Math.random()*4);
+            ImageIcon avion1 = new ImageIcon("src/Imagenes/60517.png");
+        Icon iconoAvion1 = new ImageIcon(avion1.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
+         matriz[b][b2].setIcon(iconoAvion1);
+        juego[b][b2] = 4;
         
          }
         
@@ -131,14 +139,14 @@ public class Escenario9 extends javax.swing.JFrame {
         jPanelT.setLayout(jPanelTLayout);
         jPanelTLayout.setHorizontalGroup(
             jPanelTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
         jPanelTLayout.setVerticalGroup(
             jPanelTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGap(0, 380, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanelT, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 550, 390));
+        getContentPane().add(jPanelT, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 560, 380));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Berlin Sans FB", 1, 36)); // NOI18N
@@ -189,17 +197,27 @@ public class Escenario9 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        escenario5(4, 4);
+        Tablero nuevo = new Tablero(4, 4);
+        this.dispose();
+        nuevo.setVisible(true);
+       // escenario5(4, 4); //llamó a mi método de mi código de mi matriz
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        escenario5(6, 4);
+        Tablero nuevo = new Tablero(6, 4);
+        this.dispose();
+        nuevo.setVisible(true);
+        //escenario5(6, 4);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        escenario5(8,9);
+      
+        Tablero nuevo = new Tablero(8, 9);
+        this.dispose();
+        nuevo.setVisible(true);
+        //escenario5(8,9);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

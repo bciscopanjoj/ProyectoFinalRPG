@@ -6,7 +6,6 @@
 package Interfaces;
 
 import Clases.Modelo;
-import static Interfaces.ModalidadJuego6.pathARMAS;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,6 +13,7 @@ import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static proyectofinalrpg.ProyectoFinalRPG.pathARMAS;
 
 /**
  *
@@ -36,13 +36,12 @@ public class CrearArmas10 extends javax.swing.JFrame {
      public void createBin(){
         ObjectOutputStream binario = null;
         try {
-            String nameFile = jTextField1N.getText();
-            File file = new File(nameFile);
+          String nameFile = jTextField1N.getText();
             Modelo gun = (Modelo) capsulaarmas.getLast();
            
             binario = new ObjectOutputStream(new FileOutputStream(pathARMAS+gun.getNombre()+".arm"));
             binario.writeObject(gun);
-            
+            System.out.println("Arma creada");
         } catch (Exception ex) {
             ex.printStackTrace();
            // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,6 +74,7 @@ public class CrearArmas10 extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -190,6 +190,17 @@ public class CrearArmas10 extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ciscoplay.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 190, 120));
 
+        jToggleButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jToggleButton1.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
+        jToggleButton1.setForeground(new java.awt.Color(102, 255, 255));
+        jToggleButton1.setText("VEHICULOS");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/armas.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, -1));
 
@@ -222,7 +233,7 @@ public class CrearArmas10 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-          String nombre = jTextField1N.getText();
+        String nombre = jTextField1N.getText();
         String punteria = jTextField3P.getText();
         String ataque = jTextField4A.getText();
         String precio = jTextField2P.getText();
@@ -238,7 +249,7 @@ public class CrearArmas10 extends javax.swing.JFrame {
         jTextField2P.setText("");
      
         
-        Modelo armm = (Modelo)capsulaarmas.getLast();
+       // Modelo armm = (Modelo)capsulaarmas.getLast();
         createBin();
         
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -262,6 +273,13 @@ public class CrearArmas10 extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.jTextField2P.setText(" "+jComboBox1.getSelectedItem().toString());
     }//GEN-LAST:event_jComboBox1ItemStateChanged
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+        CrearVehiculos12 creacion = new CrearVehiculos12();
+        creacion.show();
+        this.setVisible(false);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,5 +329,6 @@ public class CrearArmas10 extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2P;
     private javax.swing.JTextField jTextField3P;
     private javax.swing.JTextField jTextField4A;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

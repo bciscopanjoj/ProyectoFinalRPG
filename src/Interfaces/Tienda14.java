@@ -9,15 +9,13 @@ package Interfaces;
  *
  * @author braya
  */
-public class ModalidadJuego6 extends javax.swing.JFrame {
+public class Tienda14 extends javax.swing.JFrame {
 
     /**
-     * Creates new form ModalidadJuego6
+     * Creates new form Tienda
      */
-    public ModalidadJuego6() {
+    public Tienda14() {
         initComponents();
-        // Centrar Ventana
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -30,9 +28,10 @@ public class ModalidadJuego6 extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -40,35 +39,29 @@ public class ModalidadJuego6 extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Berlin Sans FB", 1, 36)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(102, 255, 255));
-        jButton1.setText("P V M");
+        jButton1.setText("VEHICULOS");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 220, -1));
-
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Berlin Sans FB", 1, 36)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(102, 255, 255));
-        jButton2.setText("P V P");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 220, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 190, 60));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setFont(new java.awt.Font("Berlin Sans FB", 1, 36)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
         jButton3.setForeground(new java.awt.Color(102, 255, 255));
-        jButton3.setText("TIENDA");
+        jButton3.setText("BOOTS");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 220, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 190, 60));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setFont(new java.awt.Font("Berlin Sans FB", 1, 36)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
         jButton4.setForeground(new java.awt.Color(102, 255, 255));
         jButton4.setText("REGRESAR");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -76,10 +69,27 @@ public class ModalidadJuego6 extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 220, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 190, 60));
+
+        jButton2.setBackground(new java.awt.Color(0, 0, 0));
+        jButton2.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(102, 255, 255));
+        jButton2.setText("ARMAS");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 190, 60));
+
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Berlin Sans FB", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 255, 255));
+        jLabel3.setText("COMPRAR");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 200, 60));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ciscoplay.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 200, 110));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, -1, 120));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -87,28 +97,28 @@ public class ModalidadJuego6 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // Regreso Ventana InicioJuego3
-        InicioJuego3 nuevo = new InicioJuego3();
-        nuevo.show();
-        // Cerrrar Ventana ModalidadJuego6
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // Abrir ventana Jugador7
-        Jugador7 juego = new Jugador7();
-        juego.show();
-        //Cerrar Ventana ModalidadJuego6
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Tienda14 eleccion = new Tienda14();
-        eleccion.show();
-        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Armas11 comprar = new Armas11();
+        comprar.show();
+        this.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Vehiculos13 comprar = new Vehiculos13();
+        comprar.show();
+        this.setVisible(false);
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,25 +137,25 @@ public class ModalidadJuego6 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModalidadJuego6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tienda14.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModalidadJuego6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tienda14.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModalidadJuego6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tienda14.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModalidadJuego6.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tienda14.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModalidadJuego6().setVisible(true);
+                new Tienda14().setVisible(true);
             }
         });
-        
     }
- 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -153,5 +163,6 @@ public class ModalidadJuego6 extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

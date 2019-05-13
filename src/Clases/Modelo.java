@@ -13,17 +13,27 @@ import java.io.Serializable;
  */
 public class Modelo implements Serializable {
     
-    
+    //Defino variables
     String nombre;
     String punteria;
     String ataque;
     String precio;
-
+/**
+ * CONSTRUCTOR
+ * @param nombre
+ * @param punteria
+ * @param ataque
+ * @param precio 
+ */
     public Modelo(String nombre, String punteria, String ataque, String precio) {
         this.nombre = nombre;
         this.punteria = punteria;
         this.ataque = ataque;
         this.precio = precio;
+        
+        /**
+         * METODOS PARA LOS REPORTES
+         */
     }
 
     public String getNombre() {

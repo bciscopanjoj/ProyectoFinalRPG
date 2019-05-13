@@ -24,7 +24,7 @@ import static proyectofinalrpg.ProyectoFinalRPG.pathUSUARIO;
  *
  * @author braya
  */
-public class Estadisticas8 extends javax.swing.JFrame {
+public class Reportes8 extends javax.swing.JFrame {
     
     private DefaultTableModel table;
     int amd = 0;
@@ -32,7 +32,7 @@ public class Estadisticas8 extends javax.swing.JFrame {
     /**
      * Creates new form Estadisticas8
      */
-    public Estadisticas8() {
+    public Reportes8() {
         initComponents();
         this.setLocationRelativeTo(null);
         readBinario();
@@ -54,19 +54,21 @@ public class Estadisticas8 extends javax.swing.JFrame {
         listado.clear();
         ObjectInputStream binario = null;
         try {
-          // String nameFile = jTextField1Nick.getText();
-            File f1 = new File("ClaseUsuario");
+          
+            File f1 = new File(pathUSUARIO);
             
             
-            
-            for (String string1 : f1.list()) {
+            if (f1.isDirectory()) {
                 
-                binario = new ObjectInputStream(new FileInputStream(pathUSUARIO+string1));
-                ClaseUsuario p = (ClaseUsuario) binario.readObject();
-                listado.add(p);
-                
+                    for (String string1 : f1.list()) {
+
+                        binario = new ObjectInputStream(new FileInputStream(pathUSUARIO+string1));
+                        ClaseUsuario p = (ClaseUsuario) binario.readObject();
+                        listado.add(p);
+
+                    }
+            
             }
-            
             
             
             
@@ -149,6 +151,11 @@ public class Estadisticas8 extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(102, 255, 255));
         jButton2.setText("REGRESAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.jpg"))); // NOI18N
@@ -156,6 +163,14 @@ public class Estadisticas8 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        InicioJuego3 esta = new InicioJuego3 ();
+        esta.show();
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,20 +189,23 @@ public class Estadisticas8 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Estadisticas8.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reportes8.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Estadisticas8.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reportes8.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Estadisticas8.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reportes8.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Estadisticas8.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Reportes8.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Estadisticas8().setVisible(true);
+                new Reportes8().setVisible(true);
             }
         });
     }

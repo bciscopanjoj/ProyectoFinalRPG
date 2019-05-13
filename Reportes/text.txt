@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Reportes</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+	</head>	<body ><h1>Clase Usuario </h1>	<table style="border-collapse: collapse;"><tr>
+	    <th style="border: 1px solid #000000;">NickName</th>
+	    <th style="border: 1px solid #000000;">NVehiculo1</th>
+	    <th style="border: 1px solid #000000;">NVehiculo2</th>
+	    <th style="border: 1px solid #000000;">NVehiculo3</th>
+	    <th style="border: 1px solid #000000;">Clase 1</th>
+	    <th style="border: 1px solid #000000;">Clase 2</th>
+	    <th style="border: 1px solid #000000;">Clase 3</th>
+</tr><tr>
+	    <td style="border: 1px solid #000000;">Elve</td>
+	    <td style="border: 1px solid #000000;">n14</td>
+	    <td style="border: 1px solid #000000;">n12</td>
+	    <td style="border: 1px solid #000000;">k</td>
+	    <td style="border: 1px solid #000000;"></td>
+	    <td style="border: 1px solid #000000;"> TANQUE</td>
+	    <td style="border: 1px solid #000000;"> TANQUE</td>
+</tr><tr>
+	    <td style="border: 1px solid #000000;">NICKNAME</td>
+	    <td style="border: 1px solid #000000;">NOMBRE VEHICULO</td>
+	    <td style="border: 1px solid #000000;">NOMBRE VEHICULO</td>
+	    <td style="border: 1px solid #000000;">NOMBRE VEHICULO</td>
+	    <td style="border: 1px solid #000000;"></td>
+	    <td style="border: 1px solid #000000;"></td>
+	    <td style="border: 1px solid #000000;"></td>
+</tr></body></html>

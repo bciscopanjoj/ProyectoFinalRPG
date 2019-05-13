@@ -5,16 +5,26 @@
  */
 package Interfaces;
 
+import Clases.Vehiculos;
+import static Interfaces.CrearVehiculos12.capsulavehiculo;
+import static Interfaces.Jugador7.jTextField1Nick;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static proyectofinalrpg.ProyectoFinalRPG.pathVehiculos;
 
 /**
  *
  * @author braya
  */
 public class Vehiculos13 extends javax.swing.JFrame {
-     private DefaultTableModel modelo;
-    int cont = 0;
-
+   private DefaultTableModel table;
+    int num = 0;
     /**
      * Creates new form Vehiculos13
      */
@@ -22,43 +32,77 @@ public class Vehiculos13 extends javax.swing.JFrame {
         initComponents();
          this.setLocationRelativeTo(null);
         readBinario();
-        CargarRegistrar();
-        Cargardatos();
-    }
-
+        Definir();
+        Datos();
+              
+            }
     
-    public void CargarRegistrar(){
-    String datos [][]= {};
-    String columna[]= {"Avion", "Presicion","Ataque", "Defensa", "Velocidad", "Precio"};
+    
+    public void Definir(){
+   String datos [][]= {};
+    String columna[]= {"Nombre", "Punteria","Ataque", "Defensa", "Tipo", "Precio"};
     
     
         
   
     
-    modelo= new DefaultTableModel(datos, columna);
-    jTableAviones.setModel(modelo);
+    table= new DefaultTableModel(datos, columna);
+  jTable1Vehi.setModel(table);
     
 }
-
-
     public void readBinario(){
-        contenedor_avion.clear();
+        capsulavehiculo.clear();
         ObjectInputStream binario = null;
         try {
-            String nameFile = nombre_avion.getText();
-            File file_av = new File("Aviones");
+             
+            File file_av = new File(pathVehiculos);
             
-            
-            
-            for (String string2:file_av.list()) {
+            if (file_av.isDirectory()) {
                 
-                binario = new ObjectInputStream(new FileInputStream(pathAviones+string2));
-                Aviones_C av = (Aviones_C) binario.readObject();
-                contenedor_avion.add(av);
+                for (String string2:file_av.list()) {
+
+                    binario = new ObjectInputStream(new FileInputStream(pathVehiculos+string2));
+                    Vehiculos av = (Vehiculos) binario.readObject();
+                    capsulavehiculo.add(av);
+
+                }
+                
+            }else JOptionPane.showMessageDialog(null, "No hay Vehiculos", "informacion", JOptionPane.WARNING_MESSAGE);
+                 
+        } catch (Exception ext) {
+            ext.printStackTrace();
+           // Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (binario != null ) {
+                    
+                    binario.close();
+                }
+            } catch (IOException ext) {
+                Logger.getLogger(CrearVehiculos12.class.getName()).log(Level.SEVERE, null, ext);
+            }
+        }
+        
+    }
+    
+            public void Datos(){
+                Vehiculos c;
+                for (int i = 0; i < CrearVehiculos12.capsulavehiculo.size(); i++) {
+                    c= (Vehiculos)CrearVehiculos12.capsulavehiculo.get(i);
+                    table.insertRow(num, new Object []{ });
+                    table.setValueAt(c.getNombreV(), num, 0);
+                    table.setValueAt(c.getPunteriaV(), num, 1);
+                    table.setValueAt(c.getAtaqueV(), num, 2);
+                    table.setValueAt(c.getDefensaV(), num, 3);
+                    table.setValueAt(c.getTipo(), num, 4);
+                    table.setValueAt(c.getPrecioV(),num,5);
+                    
+                 
+                }
+                    
+                
                 
             }
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,7 +113,7 @@ public class Vehiculos13 extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable1Vehi = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -77,7 +121,7 @@ public class Vehiculos13 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1Vehi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -85,7 +129,7 @@ public class Vehiculos13 extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTable1Vehi);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 380, 220));
 
@@ -154,6 +198,6 @@ public class Vehiculos13 extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable1Vehi;
     // End of variables declaration//GEN-END:variables
 }
